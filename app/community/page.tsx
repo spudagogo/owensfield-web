@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function CommunityPage() {
   return (
     <main style={{ padding: 32 }}>
