@@ -1,0 +1,366 @@
+# Owensfield Community Platform — Master Pack v1 (Single Review Document)
+
+**Purpose of this file:** one place containing (1) platform rules/spec, (2) roles & permissions, (3) workflows, (4) UI layout contract, (5) implementation checkpoints.  
+**Editing rule:** if something is wrong, edit this file. Do not re-explain in chat.
+
+---
+
+## 0) Hard Non-Negotiables
+
+- No discussion facility (no forum/comments/debate threads).
+- Archive-first: things are **archived, not deleted**, unless explicitly stated otherwise (and even then, “delete” typically means archive + retain references).
+- Governance changes require a poll and apply automatically on approval; logged and archived.
+
+---
+
+## 1) User States and Access Gates
+
+### 1.1 User states
+- Public (not logged in)
+- Member (Inactive)
+- Member (Active)
+- RG Member (Representative Group)
+- RG Member with **Elected Role** (Chair/Vice Chair/Secretary/Treasurer)
+- Temporary Mode Authority (Chair and/or Vice Chair when RG < 4)
+
+### 1.2 Inactive member restrictions (confirmed)
+- Inactive members are **not available to member content**.
+- Inactive members can access only:
+  - Profile
+  - Renewal/reactivation
+- Everything else must be blocked.
+
+---
+
+## 2) Plots, Membership, Voting (Confirmed Rules)
+
+### 2.1 Plots and voting value
+- Number of plots is fixed.
+- Each plot has **fixed voting value = 1**.
+
+### 2.2 Split of voting value
+The plot’s value (1) is split equally between all **active** people registered with the plot:
+- 1–2 plot owners
+- + 1 or more tenants
+Inactive users contribute **0** (do not receive a share).
+
+### 2.3 Joined plots (UPDATED)
+- **More than two plots can be joined** and managed under **one membership**.
+- Joining is assignable by RG admin.
+- Voting value for a joined membership = sum of joined plots (e.g., 3 plots → value 3), split equally across all **active** registered people on that joined membership.
+
+---
+
+## 3) Membership Lifecycle (Confirmed)
+
+- Membership renews annually from **scheduled AGM → next AGM**.
+- Suggested membership fee exists but is not compulsory.
+- Members are Active or Inactive depending on reactivation/renewal status.
+- Only Active members can:
+  - Vote
+  - Suggest polls
+  - Self-nominate for RG roles
+
+---
+
+## 4) Representative Group (RG) Structure (Confirmed)
+
+### 4.1 RG membership size
+- RG requires **4–7 members**.
+- If RG falls below 4 → **Temporary Mode** until restored to ≥ 4.
+
+### 4.2 Required RG roles
+All 4 positions are required:
+- Chair (single)
+- Vice Chair (single)
+- Treasurer (up to 2)
+- Secretary (up to 2)
+
+Same person can hold multiple roles if required (not preferred).
+
+### 4.3 Temporary Mode (Critical)
+Triggered when RG < 4:
+- Chair and/or Vice Chair gets full governance access and may authorise/override procedures.
+- Purpose: avoid deadlock/system breakdown until RG returns to ≥ 4.
+
+---
+
+## 5) Approval Thresholds (Confirmed)
+
+- Minimum 4 RG members to approve:
+  - Activating polls
+  - Approving minutes, meetings, actions, communications, most governance/admin approvals
+- 1 RG member required:
+  - Accepting a heritage document submission
+- 100% RG required:
+  - Removal of an RG member
+
+---
+
+## 6) Pages and Modules (Functional Specification)
+
+### 6.1 Communications (Confirmed)
+Member view:
+- Read-only archive for active members.
+
+RG workflow:
+- RG creates a communication thread.
+- RG adds updates to the thread.
+- RG can attach files to thread and updates.
+- Thread remains active until closed, then archived.
+
+### 6.2 Finance (Confirmed)
+Active members:
+- View only (account summary).
+
+Treasurer:
+- Only treasurer(s) can upload/add finance entries.
+
+### 6.3 Documents (Confirmed + additional)
+- Accessible to active members.
+- Read-only for members.
+- RG members can upload documents into specific folders.
+- Archived documents can be edited/deleted only with **4 RG approvals**.
+- General rule: archive, not delete.
+
+### 6.4 Governance (Confirmed)
+- Shows current governance settings and recent changes.
+- Shows governance polls that are live (current vs proposed).
+- Any governance change requires a poll.
+- Approved governance change:
+  - automatically takes effect
+  - displayed on governance dashboard
+  - recorded in governance log
+  - stored in documents archive
+
+### 6.5 Polls (Confirmed)
+- Any active member can suggest a poll → goes to RG pending approvals.
+- 4 RG approvals required to activate.
+- Default runtime 2 weeks; no fixed rule on runtime; RG can close unresolved polls.
+- Closed polls remain visible in “recent polls” and are archived in Documents.
+
+### 6.6 Meetings (Confirmed)
+- Community meetings: quarterly (3) + 1 AGM.
+- Meetings can be scheduled but not required.
+- RG meetings: scheduled by RG, visible to active members.
+
+Meeting creation workflow:
+- RG creates meeting
+- Draft agenda auto-generated
+- Draft minutes auto-generated
+- Drafts editable (RG)
+- Submitted drafts go into Pending Approval
+- Once approved by RG, visible to members
+
+Community agenda items:
+- When agenda exists, members can submit agenda item via form/button
+- Submission requires RG approval
+- Approved item is added to agenda
+
+### 6.7 Actions (Confirmed)
+- Actions can be created and attached to: minutes, meetings, communications, polls
+- RG records progress of an action
+- Once marked complete → archived
+
+### 6.8 Noticeboard / Calendar (Confirmed)
+- Active members and RG members can create a calendar entry
+- Visible to all members
+
+---
+
+## 7) RG Admin Area (Confirmed)
+
+### 7.1 RG “Representative Group” page (RG-only)
+- Pending elections
+- List of current members and roles
+- Link to role description document
+- Volunteer button → request appears in “Pending approvals” admin tab
+- Past members list (document stored automatically when someone steps down/elected)
+
+### 7.2 When a member holds an elected role (Elected-RG tools)
+Only RG members who hold an elected role can:
+- access membership database
+- update member profile details / edit profiles
+- access admin tools relating to plots
+
+Only treasurer can upload to finance.
+
+### 7.3 Pending approvals (RG admin menu)
+A single place where items awaiting required approvals appear (poll activation, meeting/agenda/minutes approvals, etc.).
+
+---
+
+## 8) Membership Database and Plot Registry (Confirmed)
+
+Membership database should show:
+- Plot details
+- Residents (owners/tenants)
+- Active or not
+- Email address
+
+Actions available (Elected-RG only):
+- Edit profile
+- Reset password
+- Delete profile (special meaning: removes user details only)
+  - Plot remains in database
+  - Plot marked “unregistered member”
+  - Can only be reinstated by plot owner contacting RG externally
+
+Plot owner assignment:
+- RG role members can assign a new registered plot owner to a plot
+- “Plot owner” = physical building/plot owner
+- RG must confirm in real life (meet/know externally) — not via platform trust
+
+---
+
+## 9) Elections and Role Changes (Confirmed)
+
+- Elections can take place anytime.
+- Role changes take effect only at:
+  - OCG meeting or AGM
+- If someone steps down, change comes into effect at that time as well.
+- If uncontested nominations → automatically elected.
+- Nomination length and election run time are editable.
+- Elected role only comes into effect when position is free.
+
+---
+
+## 10) Annual Report (Confirmed)
+
+- Auto-generated the day before next scheduled AGM meeting.
+- Summarises data from previous AGM → that date:
+  - spending/finances
+  - total votes
+  - polls
+  - member details
+  - main events/happenings
+- Attached to AGM meeting and archived into AGM folder.
+
+---
+
+## 11) UI Layout Contract v1 (STRUCTURE ONLY)
+
+**NOTE:** You said the previously “locked UI design” was wrong.  
+This section is here so you can mark exactly what ordering/placement is wrong.
+
+### 11.1 Global frame (intended)
+- Logged-in experience has a consistent frame:
+  - Primary nav
+  - Main content
+  - Contextual actions on relevant pages (e.g. RG tools)
+
+### 11.2 Navigation by user state (INTENDED ORDER — EDIT THIS)
+Active Member nav (proposed order for review):
+1) Dashboard
+2) Communications
+3) Meetings
+4) Polls
+5) Governance
+6) Documents
+7) Finance
+8) Noticeboard / Calendar
+9) Profile
+
+RG/Elected adds:
+- RG area
+- Pending approvals
+- Membership database
+- Plot tools
+- Actions register
+- (Treasurer-only finance upload controls)
+
+Inactive nav:
+- Profile
+- Renewal
+
+**ACTION FOR YOU:** If this order is wrong, rewrite it here. This becomes the UI authority.
+
+---
+
+## 12) Data Model Summary (Schema Targets; no assumptions beyond named entities)
+
+Entities implied/required by your workflows:
+- User/Profile
+- MembershipCycle (AGM→AGM)
+- MemberStatus (active/inactive)
+- Plot
+- PlotJoinGroup (joined plots group; supports >2 plots)
+- PlotPerson (owners/tenants) with active flag
+- RGMember + RoleAssignment (Chair/Vice/Secretary/Treasurer)
+- TemporaryMode state (derived from RG count < 4)
+- Poll
+- Vote (with computed weight snapshot)
+- GovernanceSetting
+- GovernanceChangeLog (old/new/poll/effective time; document link)
+- Meeting
+- Agenda (draft/approved)
+- Minutes (draft/approved)
+- AgendaSubmission (member submitted)
+- ActionItem (linked to poll/meeting/minutes/communication)
+- CommunicationThread
+- CommunicationUpdate + Attachments
+- DocumentFolder
+- Document + Archive metadata
+- FinanceEntry/FinanceReport
+- AnnualReport
+
+---
+
+## 13) Implementation “Where We Are” (Use as checklist)
+
+### 13.1 UI
+- [ ] Navigation matches section 11 exactly
+- [ ] Active vs inactive gating enforced
+- [ ] RG vs elected-RG gating enforced
+- [ ] Pages match workflows (polls, meetings, communications, docs, finance)
+
+### 13.2 Governance workflows
+- [ ] Suggest poll → pending approvals → activate with 4 RG → vote → close → archive
+- [ ] Governance change auto-applies and logs + archives
+
+### 13.3 Meetings workflows
+- [ ] Create meeting → auto draft docs → approval → visible to members
+- [ ] Agenda submission form → RG approval → add to agenda
+
+### 13.4 Membership DB / plot tools
+- [ ] Membership database visible only to elected-RG
+- [ ] Profile deletion = user details removed; plot persists as unregistered
+- [ ] Plot owner reassignment logged; requires external confirmation
+
+### 13.5 Archive policy
+- [ ] No hard deletes for governance records
+- [ ] Archived items read-only except where 4 RG approvals allow change
+
+---
+
+## 14) Corrections Log (YOU EDIT THIS)
+
+Use this to list what is wrong without re-explaining the whole system.
+
+### 14.1 Navigation order corrections
+- (write corrections here)
+
+### 14.2 Page layout corrections (by page)
+- Dashboard:
+- Communications:
+- Governance:
+- Meetings:
+- Polls:
+- Documents:
+- Finance:
+- RG Admin:
+
+### 14.3 Workflow corrections
+- (write corrections here)
+
+---
+
+## 15) Next Build Rule (So we don’t repeat yesterday)
+
+From now on:
+- Cursor must implement **only what is written in this file**
+- If something is missing, it must be marked **TBD** in this file first
+- No “nice looking” guesses
+- No re-asking for the same info: the answer goes here once
+
+END
